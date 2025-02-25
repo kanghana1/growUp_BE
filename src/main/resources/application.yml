@@ -3,6 +3,7 @@ spring:
     group:
       "dev-profile": "dev"
       "prod-profile": "prod"
+    active: dev-profile
   application:
     name: growup
 

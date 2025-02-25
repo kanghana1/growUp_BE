@@ -1,4 +1,4 @@
-package com.growup.demo.user.domain;
+package com.growup.demo.member.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,21 +10,21 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class User {
+public class Member {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idx;
 
     @Column(nullable = false, unique = true)
-    String userUuid;
+    String memberId;
 
     @Column(nullable = false)
-    String userName;
+    String memberName;
 
-    @Column(name = "user_email", unique = true)
+    @Column(name = "member_email", unique = true)
     String email;
 
-    @Column(name = "user_password") // 인코딩해야함
+    @Column(name = "member_password") // 인코딩해야함
     String password;
 
     LocalDateTime createAt;
@@ -34,5 +34,17 @@ public class User {
     LocalDateTime expiration;
 
     Boolean isCouple;
+
+    public void updateMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+
+    public void updatePassword(String password) {
+        this.password = password;
+    }
+
+    public void updateEmail(String email) {
+        this.email = email;
+    }
 
 }
